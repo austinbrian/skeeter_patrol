@@ -26,7 +26,7 @@ WNV_by_year = train_set.groupby(by=[train_set.Date.map(lambda x : (x.year))]).Wn
 
 
 
-weather = pd.read_csv('../data/input/weather.csv')
+weather = pd.read_csv('data/input/weather.csv')
 weather.CodeSum.value_counts()
 expanded_codes = weather['CodeSum'].str.split(' ', expand=True)
 
