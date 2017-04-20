@@ -3,7 +3,9 @@
 import pandas as pd
 import numpy as np
 
-weather = pd.read_csv('/Users/austinbrian/dev/skeeter_patrol/data/input/weather.csv')
+weather = pd.read_csv('../data/input/weather.csv')
+# Station 1 is O'Hare, Station 2 is Midway
+
 weather_types = {
 '\+FC': 'TORNADO/WATERSPOUT',
 'FC': 'FUNNEL CLOUD',
@@ -42,5 +44,3 @@ weather_types = {
 for i in weather_types:
     weather[i] = 0
     weather.loc[weather.CodeSum.str.contains(i) == True,i] = 1
-
-
