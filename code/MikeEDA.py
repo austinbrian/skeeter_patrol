@@ -4,13 +4,15 @@ import numpy as np
 import pandas as pd
 
 
-train_set = pd.read_csv('../data/input/train.csv')
+train_set = pd.read_csv('data/input/train.csv')
+
 train_set.columns
 train_set.dtypes
 
 train_set.AddressAccuracy.head()
 train_set.Date.head()
 train_set.Date = pd.to_datetime(train_set.Date)
+train_set['epoch_time'] = train_set.Date.astype('int64')//1e9
 
 train_set.Address.head()
 
@@ -73,9 +75,11 @@ for key in weather_types:
     weather_cols.append(weather_types[key])
 
 weather = pd.concat([weather,pd.DataFrame(columns=weather_cols)])
-
-def dummy_weather():
-    for 
-
+weather.Date = pd.to_datetime(weather.Date)
+weather['epoch_time'] = weather.Date.astype('int64')//1e9
 
 
+spray = pd.read_csv('data/input/spray.csv')
+spray['comb_time'] = spray.Date + ' ' + spray.Time
+spray.comb_time = pd.to_datetime(spray.comb_time)
+spray['epoch_time'] = spray.comb_time.astype('int64')//1e9

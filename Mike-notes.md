@@ -16,7 +16,9 @@
 - Map out weather codes to individual columns and get dummies
 
 
-#### Feature engineering?
+#### Feature engineering, etc.
+- Create function to calculate distance between two traps based on their lat/longs
+- 
 
 
 
