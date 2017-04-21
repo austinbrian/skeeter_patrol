@@ -4,7 +4,9 @@ import pandas as pd
 import numpy as np
 
 weather = pd.read_csv('../data/input/weather.csv')
+
 # Station 1 is O'Hare, Station 2 is Midway
+
 
 weather_types = {
 '\+FC': 'TORNADO/WATERSPOUT',
