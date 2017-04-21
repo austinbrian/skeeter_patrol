@@ -2,35 +2,57 @@
 
 import numpy as np
 import pandas as pd
+import datetime
+
+train = pd.read_csv('data/input/train.csv')
+train.Date = pd.to_datetime(train.Date)
 
 
-train_set = pd.read_csv('data/input/train.csv')
-
-train_set.columns
-train_set.dtypes
-
-train_set.AddressAccuracy.head()
-train_set.Date.head()
-train_set.Date = pd.to_datetime(train_set.Date)
-train_set['epoch_time'] = train_set.Date.astype('int64')//1e9
-
-train_set.Address.head()
-
-train_set.WnvPresent.value_counts()
-
-train_set.groupby([train_set.Date.year, train_set.Date.month]).WnvPresent.value_counts()
-
-WNV_by_month_year = train_set.groupby(by=[train_set.Date.map(lambda x : (x.year, x.month))]).WnvPresent.value_counts()
-
-WNV_by_year = train_set.groupby(by=[train_set.Date.map(lambda x : (x.year))]).WnvPresent.value_counts()
+weather = pd.read_csv('data/input/weather.csv')
+weather.Date = pd.to_datetime(weather.Date)
 
 
 
+
+
+train.columns
+train.dtypes
+
+train.AddressAccuracy.head()
+train.Date.head()
+train.Date = pd.to_datetime(train.Date)
+#train['epoch_time'] = train_set.Date.astype('int64')//1e9
+
+train.Address.head()
+
+train.WnvPresent.value_counts()
+
+train.groupby([train.Date.year, train.Date.month]).WnvPresent.value_counts()
+
+WNV_by_month_year = train.groupby(by=[train.Date.map(lambda x : (x.year, x.month))]).WnvPresent.value_counts()
+
+WNV_by_year = train.groupby(by=[train.Date.map(lambda x : (x.year))]).WnvPresent.value_counts()
+
+train.Trap.astype(str, inplace=True)
+
+trap_loc_test = train.groupby('Trap').Street.nunique()
+
+t009 = train[train.Trap=='T009']
+t009.reindex()
+point1 = (t009.loc[50, "Latitude"], t009.loc[50, "Longitude"])
+point2 = (t009.loc[3962, "Latitude"], t009.loc[3962, "Longitude"])
+higgins_dist = distance(point1, point2)
+
+#spray.Date = pd.to_datetime(spray.Date)
+#sprays_by_year = spray.groupby(by=[spray.Date.map(lambda x : (x.year))]).count()
 
 
 weather = pd.read_csv('data/input/weather.csv')
 weather.CodeSum.value_counts()
 expanded_codes = weather['CodeSum'].str.split(' ', expand=True)
+
+weather_data_check = weather.groupby(by=[weather.Date.map(lambda x: (x.year, x.month))]).Station.value_counts()
+weather = pd.concat([weather,pd.DataFrame(columns=weather_cols)])
 
 
 
@@ -70,16 +92,27 @@ weather_types = {
 'VC': 'VICINITY'}
 
 
-weather_cols = []
-for key in weather_types:
-    weather_cols.append(weather_types[key])
 
-weather = pd.concat([weather,pd.DataFrame(columns=weather_cols)])
-weather.Date = pd.to_datetime(weather.Date)
-weather['epoch_time'] = weather.Date.astype('int64')//1e9
+
+#weather['epoch_time'] = weather.Date.astype('int64')//1e9
 
 
 spray = pd.read_csv('data/input/spray.csv')
 spray['comb_time'] = spray.Date + ' ' + spray.Time
 spray.comb_time = pd.to_datetime(spray.comb_time)
 spray['epoch_time'] = spray.comb_time.astype('int64')//1e9
+     
+#test = pd.read_csv('data/input/test.csv')     
+    
+#weather_test = weather.copy()
+#weather_test.Tavg.astype(str, inplace=True)
+#weather_test.Tavg = weather_test.Tavg.replace('M', np.nan)
+#weather_test.Tavg.isnull().sum()
+#weather_test.dropna(inplace=True)
+#weather_test.Tavg.astype(int, inplace=True)
+
+
+#weather_test['avg_check'] = ((weather_test.Tmax + weather_test.Tmin) / 2).astype(int)
+
+#assert weather_test.avg_check == weather_test.Tavg
+
