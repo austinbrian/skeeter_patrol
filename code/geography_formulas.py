@@ -16,6 +16,7 @@ This formula works as-is.  I tested it using Google Maps distance calculator as 
 '''
 
 def distance(loc1, loc2):
+    print (loc1, loc2)
     lat1, lon1 = loc1
     lat2, lon2 = loc2
     radius = 6371 # radius of Earth in KM

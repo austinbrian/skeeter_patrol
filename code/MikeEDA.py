@@ -4,11 +4,20 @@ import numpy as np
 import pandas as pd
 import datetime
 
-train = pd.read_csv('data/input/train.csv')
+train = pd.read_csv('../data/input/train.csv')
 train.Date = pd.to_datetime(train.Date)
 
+train.loc[train['Coordinates'] == (41.992478000000006, -87.862994999999998), 'Trap'] = 'T009Alt'
 
-weather = pd.read_csv('data/input/weather.csv')
+train_geo_df = pd.merge(train, dist_df, how='left', left_on='Trap', right_on='Trap')
+train_geo_df = pd.merge(train_geo_df, bearing_df, how='left', left_on='Trap', right_on='Trap')
+
+
+
+
+
+
+weather = pd.read_csv('../data/input/weather.csv')
 weather.Date = pd.to_datetime(weather.Date)
 
 
