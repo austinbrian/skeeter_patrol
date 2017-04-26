@@ -1,0 +1,43 @@
+XGBoost - XGBoost with python PDF
+	Plot AUC by Epoch - iPython notebook example & xgb pdf
+	Plot Logloss by Epoch - iPython notebook example & xgb pdf
+	Plot Error by Epoch - iPython notebook example & xgb pdf
+	Plot Feature Importance - Features vs F Score pg. 46
+	XGB Training Speed vs # of Threads (can we without AWS?) pg. 61
+
+EDA
+	Correlation plot
+
+Dimensionality reduction
+	covariance matrix - python data science essentials.pdf pg 91
+
+PCA
+	2D/1D scatterplot showing explained variance ratio pg 91
+
+Logistic Regression
+	classification report - precision/recall/f1-score/support pg 146
+
+Random Forest
+	relative frequency vs predicted probability?
+	http://blog.yhat.com/posts/predicting-customer-churn-with-sklearn.html
+
+HDBSCAN
+	hierarchy plot - https://pypi.python.org/pypi/hdbscan/
+
+SVMs w/probability output
+	probability calibration plots - http://scikit-learn.org/stable/modules/calibration.html
+
+Mapping Geo Data - Bokeh
+	http://bokeh.pydata.org/en/latest/docs/user_guide/geo.html
+	GeoJSON Datasource - plot the traps
+	GMapPlot - plot the bokeh glyph over a Google Map for Chitown
+	If we wanted to walk through one time WNV was present and show the wind vector on a map and connect it to another map later when WNV is present at that point?? Does it actually happen??
+
+Tableau
+	Geo data if bokeh is too difficult
+
+Bokeh - some of the above plots inline in Jupyter Notebook will look better than the rest for sure
+	http://bokeh.pydata.org/en/latest/docs/user_guide/notebook.html
+
+Good stuff here for probabilities and confusion matrix
+	http://blog.yhat.com/posts/predicting-customer-churn-with-sklearn.html

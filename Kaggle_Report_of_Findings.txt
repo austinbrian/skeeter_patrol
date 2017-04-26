@@ -1,0 +1,27 @@
+What is our problem statement?
+
+West Nile Virus (WNV) is commonly spread when infected mosquitos bite humans. Symptoms of WNV can vary from fever to death in the most extreme cases. The Chicago Department of Public Health (CDPH) has limited resources and would like to better predict when WNV will be present among the local mosquito population. Accurate predictions of WNV will help the CDPH in allocating resources to spray of airborne pesticides to control adult mosquito populations. 
+
+Given weather, location, testing, and spraying data as resources, we will train models to predict the probability of WNV being present for a given species on a given date in the testing data. The train.csv data covers the years 2007, 2009, 2011, and 2013. The test.csv data covers the years 2008, 2010, 2012, and 2014. Both contain the columns shown in the data dictionary below.
+
+Id: the id of the record
+Date: date that the WNV test is performed
+Address: approximate address of the location of trap. This is used to send to the GeoCoder. 
+Species: the species of mosquitos
+Block: block number of address
+Street: street name
+Trap: Id of the trap
+AddressNumberAndStreet: approximate address returned from GeoCoder
+Latitude, Longitude: Latitude and Longitude returned from GeoCoder
+AddressAccuracy: accuracy returned from GeoCoder
+NumMosquitos: number of mosquitoes caught in this trap
+WnvPresent: whether West Nile Virus was present in these mosquitos. 1 means WNV is present, and 0 means not present. 
+
+
+
+What can we learn from the data in order to make an educated hypothesis?
+
+What patterns in the data contribute to the spreading of WNV among the adult mosquito populations.
+
+What is our hypothesis?
+	
