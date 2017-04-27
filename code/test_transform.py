@@ -15,6 +15,10 @@ weather.PrecipTotal = weather.PrecipTotal.str.strip() # to remove the leading sp
 weather = weather.replace('T', 0.005)
 weather = weather.replace('M', np.nan)
 
+weather_excluded = ['Depth', 'Water1', 'SnowFall', 'Depart', 'Heat', 'Cool', 'Sunrise', 'Sunset']
+weather_keep = [column for column in weather.columns if column not in weather_excluded]
+weather = weather[weather_keep]
+
 '''
 Formula for calculating compass bearing between two lat/lon tuples.  Credit:  https://gist.github.com/jeromer/2005586
 Corrected output error in which returned bearing (in degrees) needed to be subtracted from 360 in order to be correct.
@@ -191,5 +195,15 @@ test = pd.merge(test, dist_df, how='left', left_on='Trap', right_on='Trap')
 test = pd.merge(test, bearing_df, how='left', left_on='Trap', right_on='Trap')
 test = pd.merge(test,n_weather,left_on=['Date','Weather_Station'],right_on=['Date','Station'])
 
+# test = pd.read_csv('../data/input/test.csv')
+species = set(test.Species)
+species = [i for i in species]
+species_labels = {}
+for i,v in enumerate(species):
+    species_labels[v] = i
+test['species_labels'] = test['Species'].map(species_labels)
+
 # Convert the date to the epoch
 test['Epoch'] = test.Date.astype(np.int64) // 10**9
+
+# test.to_csv('~/DropBox/DSI/test_transformed.csv')
